@@ -398,14 +398,12 @@ bool SceneData::GdtfConverter::ConvertColorArray(TXString values, const IXMLFile
 	return valueStr;
 }
 
-#ifdef IS64BIT
 /*static*/ TXString GdtfConverter::ConvertInteger(Uint32 value)
 {
 	TXString valueStr;
 	valueStr << value;
 	return valueStr;
 }
-#endif
 
 /*static*/ bool GdtfConverter::ConvertDmxBreak(const TXString& value, const IXMLFileNodePtr& node,Sint32& intValue)
 {
