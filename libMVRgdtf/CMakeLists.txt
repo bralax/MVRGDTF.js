@@ -53,7 +53,7 @@ ADD_DEFINITIONS(-D_UNICODE)
 
 #################################################
 
-add_subdirectory(mdns_cpp)
+#add_subdirectory(mdns_cpp)
 
 #################################################
 # create the project
