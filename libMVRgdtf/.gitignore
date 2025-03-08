@@ -1,0 +1,79 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+
+# Executables
+*.exe
+*.out
+*.app
+*.mvr
+
+# etc
+*.pdb
+*.idb
+*.log
+*.lastbuildstate
+*.tlog
+*.ipdb
+*.iobj
+*.exp
+*.ilk
+
+# Directories
+.vs/
+bin/
+obj/
+testfiles/
+enc_temp_folder/
+build/
+build_MD/
+build_MT/
+_build/
+
+# exclude specific files
+\.vscode/settings\.json
+x64/Debug/libVectorworksMvrGdtf.lib
+x64/Debug/libVectorworksMvrGdtf.dll
+x64/Release/libVectorworksMvrGdtf.lib
+x64/Release/libVectorworksMvrGdtf.dll
+x64/Debug/testGdtf.gdtf.zip
+
+libs/lin/release/libVectorworksMvrGdtf\.a
+
+x64/Release/vectorworksMvrGdtfTestApp
+.vscode/ipch/**
+shared/**
+libs/**
+x64/**
+
+libVectorworksMvrGdtf\.vcx/libs
+.DS_Store
+.vscode/c_cpp_properties.json
+
+build_v7a/
+
+build_v8a/
+
+node_modules
+output
