@@ -29,7 +29,7 @@ jobs:
         shell: bash
         working-directory: libMvrGdtf/xerces-c
         run: |
-          ls && cd ../ && ls
+          ls
         # emconfigure ./configure --disable-shared --enable-xmlch-uint16_t --prefix=$(pwd)/_build CFLAGS="-fPIC" CXXFLAGS="-fPIC" 
           # make -j
           # make install
