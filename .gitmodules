@@ -1,0 +1,6 @@
+[submodule "libMVRgdtf"]
+	path = libMVRgdtf
+	url = https://github.com/mvrdevelopment/libMVRgdtf.git
+[submodule "xerces-c"]
+	path = xerces-c
+	url = https://github.com/apache/xerces-c.git
