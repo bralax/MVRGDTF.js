@@ -12,6 +12,7 @@ jobs:
         with:
           path: libMvrGdtf
           fetch-depth: 0
+          submodules: true
           fetch-tags: true
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js 20.x
