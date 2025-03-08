@@ -1,10 +1,10 @@
 name: Release on NPM
 
-on:
-  push
+on: push
 
 jobs:
   release:
+    name: release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository under ./libMvrGdtf
@@ -14,24 +14,16 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           token: ${{ secrets.ADMIN_TOKEN }}
-
       - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
           scope: '@mvrdevelopment'
-
       - uses: mymindstorm/setup-emsdk@v14
-
       - name: Install prerequisites
-      shell: bash
-      run: |
-        sudo apt-get update -y
-        sudo apt-get install -y libcurl4-openssl-dev
-        sudo apt-get install -y cmake
-        
-
+        shell: bash
+        run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev && sudo apt-get install -y cmake
       # libMVRGdtf expects XMLChar be uint16_t
       - name: Xerces-C - build
         shell: bash
@@ -49,24 +41,3 @@ jobs:
           cd build
           emmake cmake .. -DUNITTEST=TRUE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a"
           make -j
-
-      # - name: Prepare package
-      #   shell: bash
-      #   working-directory: libMvrGdtf
-      #   run: |
-      #     mkdir -p output/include
-      #     cp -r src/Include/* output/include/
-
-      #     mkdir -p output/lib
-      #     cp ../xerces-c/_build/lib/libxerces-c.a ./libs/libxerces-c.a
-      #     cp -r libs/* output/lib/
-      # - name: Create Release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   working-directory: libMvrGdtf
-      #   run: |
-      #     npm install
-      #     git config user.email "auto-release-bot@mvrdevelopment.com"
-      #     git config user.name "Auto release bot"
-      #     npm run release
