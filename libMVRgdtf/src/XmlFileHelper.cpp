@@ -448,7 +448,6 @@ bool SceneData::GdtfConverter::ConvertColorArray(TXString values, const IXMLFile
 	return true;
 }
 
-#ifdef IS64BIT
 /*static*/ bool GdtfConverter::ConvertInteger(const TXString& value, const IXMLFileNodePtr& node, Uint32& intValue)
 {
     if(value.IsEmpty()) return false;
@@ -456,7 +455,6 @@ bool SceneData::GdtfConverter::ConvertColorArray(TXString values, const IXMLFile
     intValue = value.atoi();
 	return true;
 }
-#endif
 
 TXString SceneData::GdtfConverter::ConvertDMXValue(DmxValue value, EGdtfChannelBitResolution chanlReso, bool noneValue)
 /* Convert DmxValue to String */
