@@ -35,7 +35,7 @@ jobs:
 
       - name: libMVRGdtf - build
         shell: bash
-        working-directory: libMvrGdtf
+        working-directory: libMvrGdtf/libMVRgdtf
         run: |
           mkdir build
           cd build
