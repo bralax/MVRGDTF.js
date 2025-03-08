@@ -27,7 +27,7 @@ jobs:
       # libMVRGdtf expects XMLChar be uint16_t
       - name: Xerces-C - build
         shell: bash
-        working-directory: xerces-c
+        working-directory: libMvrGdtf/xerces-c
         run: |
           emconfigure ./configure --disable-shared --enable-xmlch-uint16_t --prefix=$(pwd)/_build CFLAGS="-fPIC" CXXFLAGS="-fPIC" 
           make -j
