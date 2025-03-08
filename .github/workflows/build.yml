@@ -34,7 +34,7 @@ jobs:
         shell: bash
         working-directory: libMvrGdtf/xerces-c
         run: |
-          ./configure --disable-shared --enable-xmlch-uint16_t --prefix=$(pwd)/_build CFLAGS="-fPIC" CXXFLAGS="-fPIC" 
+          emconfigure ./configure --disable-shared --enable-xmlch-uint16_t --prefix=$(pwd)/_build CFLAGS="-fPIC" CXXFLAGS="-fPIC" 
           make -j
           make install
 
@@ -44,5 +44,5 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DUNITTEST=TRUE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a"
+          emmake cmake .. -DUNITTEST=TRUE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a" -DBUILD_MVR_XCHANGE=false
           make -j
