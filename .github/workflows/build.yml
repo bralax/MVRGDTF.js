@@ -46,7 +46,7 @@ jobs:
           mkdir build
           cd build
           emmake cmake .. -DUNITTEST=FALSE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a" -DBUILD_MVR_XCHANGE=false
-          make VERBOSE=1 -j
+          make -j
       - name: Prepare package
         shell: bash
         working-directory: libMvrGdtf/libMVRgdtf
@@ -59,7 +59,7 @@ jobs:
           cp -r libs/* output/lib/
       - name: libMVRGdtf - wasm
         shell: bash
-        working-directory: libMvrGdtf/libMVRgdtf/output
+        working-directory: libMvrGdtf/libMVRgdtf/output/lib
         run: |
           emcc -lembind -o library.js --emit-tsd interface.d.ts -Wl,--whole-archive libMvrGdtf.a -Wl, --whole-archive libxerces-c.a -Wl,--no-whole-archive
       - name: libMVRGdtf - GDTFPrefix
