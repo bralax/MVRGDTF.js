@@ -62,8 +62,18 @@ jobs:
       #   working-directory: libMvrGdtf/libMVRgdtf/output
       #   run: |
       #     emcc -L.lib -o libmvrgdtfraw.cjs -s MODULARIZE -s ALLOW_MEMORY_GROWTH -s ALLOW_TABLE_GROWTH -s EXPORTED_RUNTIME_METHODS=@../binding/exported-runtime-functions.txt -s EXPORTED_FUNCTIONS=@../binding/exported-functions.txt -s SINGLE_FILE
-      - name: libMVRGdtf - wasm
+      - name: libMVRGdtf - GDTFPrefix
         shell: bash
         working-directory: libMvrGdtf/libMVRgdtf/output/include
         run: |
-          ls
+          cat GDTFPrefix.h
+      - name: libMVRGdtf - IMediaRessourceVectorInterface
+        shell: bash
+        working-directory: libMvrGdtf/libMVRgdtf/output/include
+        run: |
+          cat IMediaRessourceVectorInterface.h
+      - name: libMVRGdtf - VectorworksMVR
+        shell: bash
+        working-directory: libMvrGdtf/libMVRgdtf/output/include
+        run: |
+          cat VectorworksMVR.h
