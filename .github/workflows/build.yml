@@ -45,5 +45,5 @@ jobs:
         run: |
           mkdir build
           cd build
-          emmake cmake .. -DUNITTEST=TRUE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a" -DBUILD_MVR_XCHANGE=false
+          emmake cmake .. -DUNITTEST=FALSE -DEXTRA_LIBS="curl;icuuc;icudata;icui18n;icuio" -DXERCES_LIB_PATH="$(pwd)/../../xerces-c/_build/lib/libxerces-c.a" -DBUILD_MVR_XCHANGE=false
           make VERBOSE=1 -j
