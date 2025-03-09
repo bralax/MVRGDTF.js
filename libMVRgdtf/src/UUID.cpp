@@ -311,7 +311,7 @@ void VWFC::Tools::VWUUID::New()
 	fData[15]			= guid.Data4[7];
 #elif _LINUX
 	uuid_t myUUID;
-	uuid_generate_time_safe( myUUID );
+	uuid_generate( myUUID );
 	memcpy( fData, &myUUID, 16 );
 #elif __APPLE__
 
