@@ -57,13 +57,13 @@ jobs:
           mkdir -p output/lib
           cp ../xerces-c/_build/lib/libxerces-c.a ./libs/libxerces-c.a
           cp -r libs/* output/lib/
+      # - name: libMVRGdtf - wasm
+      #   shell: bash
+      #   working-directory: libMvrGdtf/libMVRgdtf/output
+      #   run: |
+      #     emcc -L.lib -o libmvrgdtfraw.cjs -s MODULARIZE -s ALLOW_MEMORY_GROWTH -s ALLOW_TABLE_GROWTH -s EXPORTED_RUNTIME_METHODS=@../binding/exported-runtime-functions.txt -s EXPORTED_FUNCTIONS=@../binding/exported-functions.txt -s SINGLE_FILE
       - name: libMVRGdtf - wasm
         shell: bash
-        working-directory: libMvrGdtf/libMVRgdtf/output
-        run: |
-          ls
-      - name: libMVRGdtf - wasm
-        shell: bash
-        working-directory: libMvrGdtf/libMVRgdtf/output/lib
+        working-directory: libMvrGdtf/libMVRgdtf/output/include
         run: |
           ls
