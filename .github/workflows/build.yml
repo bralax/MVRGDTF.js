@@ -57,11 +57,11 @@ jobs:
           mkdir -p output/lib
           cp ../xerces-c/_build/lib/libxerces-c.a ./libs/libxerces-c.a
           cp -r libs/* output/lib/
-      # - name: libMVRGdtf - wasm
-      #   shell: bash
-      #   working-directory: libMvrGdtf/libMVRgdtf/output
-      #   run: |
-      #     emcc -L.lib -o libmvrgdtfraw.cjs -s MODULARIZE -s ALLOW_MEMORY_GROWTH -s ALLOW_TABLE_GROWTH -s EXPORTED_RUNTIME_METHODS=@../binding/exported-runtime-functions.txt -s EXPORTED_FUNCTIONS=@../binding/exported-functions.txt -s SINGLE_FILE
+      - name: libMVRGdtf - wasm
+        shell: bash
+        working-directory: libMvrGdtf/libMVRgdtf/output
+        run: |
+          emcc -lembind -o library.js --emit-tsd interface.d.ts -Wl,--whole-archive libMvrGdtf.a -Wl, --whole-archive libxerces-c.a -Wl,--no-whole-archive
       - name: libMVRGdtf - GDTFPrefix
         shell: bash
         working-directory: libMvrGdtf/libMVRgdtf/output/include
@@ -77,9 +77,9 @@ jobs:
         working-directory: libMvrGdtf/libMVRgdtf/output/include
         run: |
           cat VectorworksMVR.h
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: output
-          path: |
-            libMvrGdtf/libMVRgdtf/output
+      # - name: Archive production artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: output
+      #     path: |
+      #       libMvrGdtf/libMVRgdtf/output
