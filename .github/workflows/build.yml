@@ -52,3 +52,8 @@ jobs:
         working-directory: libMvrGdtf/libMVRgdtf/build
         run: |
           ls
+      - name: libMVRGdtf - wasm
+        shell: bash
+        working-directory: libMvrGdtf/libMVRgdtf
+        run: |
+          ls
