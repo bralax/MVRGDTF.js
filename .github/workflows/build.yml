@@ -61,7 +61,7 @@ jobs:
         shell: bash
         working-directory: libMvrGdtf/libMVRgdtf/output/lib
         run: |
-          emcc -lembind -o library.js --emit-tsd interface.d.ts -Wl,--whole-archive libMvrGdtf.a -Wl,--no-whole-archive -s LINKABLE=1 -s EXPORT_ALL=1
+          emcc -lembind -o library.js --emit-tsd interface.d.ts -Wl,--whole-archive libMvrGdtf.a -Wl,--whole-archive libxerces-c.a -Wl,--no-whole-archive -s LINKABLE=1 -s EXPORT_ALL=1
       - name: libMVRGdtf - GDTFPrefix
         shell: bash
         working-directory: libMvrGdtf/libMVRgdtf/output/include
