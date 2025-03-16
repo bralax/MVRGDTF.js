@@ -64,7 +64,9 @@ jobs:
           cp parser.js libMVRgdtf/output/parser.js 
           cd libMVRgdtf/output 
           node parser.js 
-          emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
+          cat VectorworksMVR.json
+          cat VectorworksMVR.error
+        #  emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
       # - name: libMVRGdtf - wasm
       #   shell: bash
       #   working-directory: libMvrGdtf/libMVRgdtf/output/lib
