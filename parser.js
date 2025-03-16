@@ -9,7 +9,10 @@ function headerToJson() {
         const res = child_process.spawn('clang', ['-Xclang', '-ast-dump=json', '-fsyntax-only', '-x', 'c++', 'VectorworksMVR.h'], {stdio: ['pipe', 'pipe','pipe']});
 
         const writeStream = fs.createWriteStream("VectorworksMVR.json");
+        const errWriteStream = fs.createWriteStream("VectorworksMVR.error");
+
         res.stdout.pipe(writeStream);
+        res.stderr.pipe(errWriteStream);
         const resFunc = () => {
             resolve(fs.readFileSync('VectorworksMVR.json', {encoding: 'utf-8'}));
         };
@@ -66,8 +69,9 @@ function parseConstructor(node) {
 
 
 async function main() {
-    const jsonData = JSON.parse(await headerToJson());
-    const mvrNamespaces = jsonData.inner.filter(item => item.kind === 'NamespaceDecl' && item.name === 'VectorworksMVR');
+    await headerToJson();
+    //const jsonData = JSON.parse(await headerToJson());
+    /*const mvrNamespaces = jsonData.inner.filter(item => item.kind === 'NamespaceDecl' && item.name === 'VectorworksMVR');
     const declarations = [];
     for (const namespace of mvrNamespaces) {
         for (const item of namespace.inner) {
@@ -103,5 +107,5 @@ using namespace emscripten;
 EMSCRIPTEN_BINDINGS(module) {
     ${declarations.join("\n")}
 };`;
-    fs.writeFileSync('main.cpp', res);
+    fs.writeFileSync('main.cpp', res);*/
 }
