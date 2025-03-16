@@ -92,7 +92,7 @@ async function main() {
     }
 
     const res = `
-#include "Include/VectorworksMVR.h"
+#include "./include/VectorworksMVR.h"
 
 #include <emscripten/bind.h>
 
