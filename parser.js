@@ -69,9 +69,8 @@ function parseConstructor(node) {
 
 
 async function main() {
-    await headerToJson();
-    //const jsonData = JSON.parse(await headerToJson());
-    /*const mvrNamespaces = jsonData.inner.filter(item => item.kind === 'NamespaceDecl' && item.name === 'VectorworksMVR');
+    const jsonData = JSON.parse(await headerToJson());
+    const mvrNamespaces = jsonData.inner.filter(item => item.kind === 'NamespaceDecl' && item.name === 'VectorworksMVR');
     const declarations = [];
     for (const namespace of mvrNamespaces) {
         for (const item of namespace.inner) {
@@ -107,5 +106,5 @@ using namespace emscripten;
 EMSCRIPTEN_BINDINGS(module) {
     ${declarations.join("\n")}
 };`;
-    fs.writeFileSync('main.cpp', res);*/
+    fs.writeFileSync('main.cpp', res);
 }
