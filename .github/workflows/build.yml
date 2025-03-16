@@ -59,10 +59,10 @@ jobs:
           cp -r libs/* output/lib/
       - name: libMVRGdtf - wasm
         shell: bash
-        working-directory: libMvrGdtf/libMVRgdtf
+        working-directory: libMvrGdtf
         run: |
-          cp parser.js output/include/parser.js 
-          cd output/include 
+          cp parser.js libMVRgdtf/output/include/parser.js 
+          cd libMVRgdtf/output/include 
           node parser.js 
           emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
       # - name: libMVRGdtf - wasm
