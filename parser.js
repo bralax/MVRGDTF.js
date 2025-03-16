@@ -6,7 +6,7 @@ main();
 
 function headerToJson() {
     return new Promise((resolve) => {
-        const res = child_process.spawn('clang', ['-Xclang', '-ast-dump=json', '-fsyntax-only', '-x', 'c++', 'VectorworksMVR.h'], {stdio: ['pipe', 'pipe','pipe']});
+        const res = child_process.spawn('clang', ['-Xclang', '-ast-dump=json', '-fsyntax-only', '-x', 'c++', 'include/VectorworksMVR.h'], {stdio: ['pipe', 'pipe','pipe']});
 
         const writeStream = fs.createWriteStream("VectorworksMVR.json");
         const errWriteStream = fs.createWriteStream("VectorworksMVR.error");
