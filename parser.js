@@ -44,8 +44,8 @@ function parseClass(node) {
         }
     }
     console.log(JSON.stringify(parsedNode));
+    //    ${parsedNode.constructors.length === 0 ? ".constructor<>()" : parsedNode.constructors.map(item =>`.constructor<${item.params.join(",")}>()`).join("\n   ")}${parsedNode.methods.length === 0  ? ';' : ''}
     return ` class_<${parsedNode.name}>("${parsedNode.name}")
-    ${parsedNode.constructors.length === 0 ? ".constructor<>()" : parsedNode.constructors.map(item =>`.constructor<${item.params.join(",")}>()`).join("\n   ")}${parsedNode.methods.length === 0  ? ';' : ''}
 ${parsedNode.methods.map(method => `    .function("${method.name}", &${parsedNode.name}::${method.name})`).join("\n")}${parsedNode.methods.length !== 0  ? ';' : ''}
     `
 }
