@@ -64,8 +64,7 @@ jobs:
           cp parser.js libMVRgdtf/output/parser.js 
           cd libMVRgdtf/output 
           node parser.js 
-          cat main.cpp
-        #  emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
+          emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
       # - name: libMVRGdtf - wasm
       #   shell: bash
       #   working-directory: libMvrGdtf/libMVRgdtf/output/lib
