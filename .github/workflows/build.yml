@@ -61,8 +61,8 @@ jobs:
         shell: bash
         working-directory: libMvrGdtf
         run: |
-          cp parser.js libMVRgdtf/output/include/parser.js 
-          cd libMVRgdtf/output/include 
+          cp parser.js libMVRgdtf/output/parser.js 
+          cd libMVRgdtf/output 
           node parser.js 
           emcc -lembind -o main.js main.cpp --emit-tsd main.d.ts
       # - name: libMVRGdtf - wasm
