@@ -1,11 +1,16 @@
 name: Release on NPM
 
-on: push
+on:
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   release:
     name: release
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Checkout repository under ./libMvrGdtf
         uses: actions/checkout@v4
