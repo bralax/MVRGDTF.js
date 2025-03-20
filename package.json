@@ -1,0 +1,32 @@
+{
+  "name": "libmvrgdtfjs",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile:build": "tsc --project tsconfig.build.json",
+    "run:build": "node ./build-comp/build/generate.js -i ./build/gdtf.xsd -o ./lib/parser",
+    "compile:code": "tsc --project tsconfig.json",
+    "build": "npm run compile:build && npm run run:build && npm run compile:code",
+    "test": "echo \"Error: no test specified\"",
+    "clean": "rm -rf dist/ && rm -rf build-comp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bralax/libMVRgdtfJS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bralax/libMVRgdtfJS/issues"
+  },
+  "homepage": "https://github.com/bralax/libMVRgdtfJS#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "fast-xml-parser": "^5.0.9"
+  }
+}
