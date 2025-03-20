@@ -1,15 +1,21 @@
 {
-  "name": "libmvrgdtfjs",
+  "name": "mvrgdtf.js",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "compile:build": "tsc --project tsconfig.build.json",
-    "run:build": "node ./build-comp/build/generate.js -i ./build/gdtf.xsd -o ./lib/parser",
+    "run:build": "npm run run:build-gdtf && npm run run:build-mvr",
+    "run:build-gdtf": "node ./build-comp/build/generate.js -i ./build/gdtf.xsd -o ./lib/gdtf -f parser",
+    "run:build-mvr": "node ./build-comp/build/generate.js -i ./build/mvr.xsd -o ./lib/mvr -f parser",
     "compile:code": "tsc --project tsconfig.json",
     "build": "npm run compile:build && npm run run:build && npm run compile:code",
     "test": "echo \"Error: no test specified\"",
-    "clean": "rm -rf dist/ && rm -rf build-comp"
+    "clean": "rm -rf dist/ && rm -rf build-comp && rm -rf lib/gdtf/types.ts lib/mvr/parser.ts && rm -rf lib/mvr/types.ts lib/mvr/parser.ts"
   },
+  "files": [
+    "dist/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bralax/libMVRgdtfJS.git"
@@ -22,10 +28,12 @@
   "homepage": "https://github.com/bralax/libMVRgdtfJS#readme",
   "description": "",
   "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
     "@types/node": "^22.13.10",
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "commander": "^13.1.0",
     "fast-xml-parser": "^5.0.9"
   }

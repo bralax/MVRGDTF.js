@@ -118,13 +118,34 @@ export function generateAttributeRetrieval(baseType: string, key: string) {
 }
 
 export function generateElementRetrieval(baseType: string) {
+    const baseRetrieval = `node?.children?.[0]`;
+    let handler: string = '';
     switch(baseType) {
         case "string":
-            return "''";
+            handler = `    return (${baseRetrieval}) as string`;
+            break;
         case "number":
-            return "''";
+            handler = `
+    const value = ${baseRetrieval};
+    if (typeof value === 'string') {
+        return parseFloat(value);
+    } else if (typeof value === 'number') {
+        return value;
+    } else {
+        throw new Error(\`Field is of an unexpected type \${typeof value}\`)
+    }`;
+            break;
         case "boolean":
-            return "''";
+            handler = `
+    const value = ${baseRetrieval};
+    if (typeof value === 'string') {
+        return value === 'true';
+    } else if (typeof value === 'boolean') {
+        return value;
+    } else {
+        throw new Error(\`Field is of an unexpected type \${typeof value}\`)
+    }`;
+            break;
         case "object":
         default:
             return `${generateParseFunctionName({name: baseType} as Schema)}(elem)`;

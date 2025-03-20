@@ -50,10 +50,11 @@ function parseRootElement(nodes: XMLNode[]): Schema {
 
 function parseElement(node: XMLNode): SubNode {
     const occurances = node.attributes['minOccurs'] ? parseInt(node.attributes['minOccurs']) : 0;
+    const {baseType, subType} = parseType(node.attributes['type']);
     return {
         minOccurances: occurances,
         name: node.attributes['name'],
-        type: node.attributes['type'],
+        type: baseType === 'object' && subType ? subType : baseType,
         restrictions: []
     };
 }

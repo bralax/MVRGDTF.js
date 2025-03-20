@@ -1,3 +1,7 @@
 dist/
 node_modules/
 build-comp/
+lib/mvr/parser.ts
+lib/mvr/types.ts
+lib/gdtf/parser.ts
+lib/gdtf/types.ts
