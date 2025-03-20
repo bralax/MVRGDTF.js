@@ -21,6 +21,6 @@ export function generateTypeDef(allSchemas: Schema[]) {
 export function generateInterface(schema: ComplexSchema) {
     return `
 export interface ${sanitizeName(schema.name)} ${schema.parent ? `extends ${schema.parent}` : ""} {
-${schema.attributes.map(attr => `   ${sanitizeName(attr.key)}${attr.isRequired ? '' : '?'}: ${sanitizeName(attr.type)};`).join("\n")}${schema.attributes.length > 0 ? '\n' : ''}${schema.subNodes.map(node => `   ${sanitizeName(node.name)}${node.minOccurances === 0 ? '?' : ''}: ${sanitizeName(node.type)}[];`).join("\n")}
+${schema.attributes.map(attr => `   ${sanitizeName(attr.key)}${attr.isRequired ? '' : '?'}: ${sanitizeName(attr.type)};`).join("\n")}${schema.attributes.length > 0 ? '\n' : ''}${schema.subNodes.map(node => `   ${sanitizeName(node.name)}${node.minOccurances === 0 ? '?' : ''}: ${sanitizeName(node.type)}${node.maxOccurances !== 1 ? '[]': ''};`).join("\n")}
 }`
 }

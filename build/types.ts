@@ -24,6 +24,7 @@ export interface Attribute {
 
 export interface SubNode {
     minOccurances: number;
+    maxOccurances: number;
     name: string;
     type: string;
     restrictions: SubNodeRestriction[];

@@ -48,15 +48,28 @@ function parseRootElement(nodes: XMLNode[]): Schema {
     }
 }
 
-function parseElement(node: XMLNode): SubNode {
-    const occurances = node.attributes['minOccurs'] ? parseInt(node.attributes['minOccurs']) : 0;
+function parseElement(node: XMLNode, parent: XMLNode): SubNode {
+    const minOccurances = handleOccurs(node, parent, 'minOccurs');
+    const maxOccurances = handleOccurs(node, parent, 'maxOccurs');
+
     const {baseType, subType} = parseType(node.attributes['type']);
     return {
-        minOccurances: occurances,
+        minOccurances,
+        maxOccurances,
         name: node.attributes['name'],
         type: baseType === 'object' && subType ? subType : baseType,
         restrictions: []
     };
+}
+
+function handleOccurs(node: XMLNode, parent: XMLNode, occurs: 'minOccurs' | 'maxOccurs') {
+    if (node.attributes?.[occurs]) {
+        return node.attributes[occurs] === 'unbounded' ? -1 : parseInt(node.attributes[occurs]);
+    }
+    if (parent.attributes?.[occurs]) {
+        return parent.attributes[occurs] === 'unbounded' ? -1 : parseInt(parent.attributes[occurs]);
+    }
+    return 1;
 }
 
 function parseGroup(node: XMLNode): Schema {
@@ -91,7 +104,7 @@ function parseComplexType(node: XMLNode): ComplexSchema {
         item.type === 'xs:all' || item.type === 'xs:choice');
     let subNodes: SubNode[] = [];
     if (allOrSequence) {
-        subNodes = allOrSequence.children.map(item => parseElement(item));
+        subNodes = allOrSequence.children.map(item => parseElement(item, allOrSequence));
     }
     let group = node.children.find(item => item.type === 'xs:group');
     return {

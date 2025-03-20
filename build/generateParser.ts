@@ -86,13 +86,21 @@ function ${generateParseFunctionName(schema)}(node: XMLNode, parent?: Partial<${
     ${schema.attributes.map(attr => `obj.${sanitizeName(attr.key)} = ${generateAttributeRetrieval(attr.type!, attr.key)};`).join("\n    ")}
     ${schema.subNodes.length > 0 ? `for (const elem of node.children) {
         switch(elem.type) {
-            ${schema.subNodes.map(val => `case "${val.name}":
+            ${schema.subNodes.map(val => {
+            if (val.maxOccurances !== 1) {
+                return `case "${val.name}":
                 if (!obj.${sanitizeName(val.name)}) {
                     obj.${sanitizeName(val.name)} = [];
                 }
                 obj.${sanitizeName(val.name)}.push(${generateElementRetrieval(val.type)});
                 break;
-                `).join("\n            ")}
+                `
+            } else {
+                return `case "${val.name}":
+                obj.${sanitizeName(val.name)} = ${generateElementRetrieval(val.type)};
+                break;
+                `
+            }}).join("\n            ")}
         }
     }`: ''}
     if (!${generateCheckFunctionName(schema)}(obj)) {
