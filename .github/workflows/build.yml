@@ -1,4 +1,4 @@
-name: Release on NPM
+name: Test build
 
 on:
   push:
