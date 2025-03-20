@@ -18,14 +18,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bralax/libMVRgdtfJS.git"
+    "url": "git+https://github.com/bralax/MVRGDTF.js"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bralax/libMVRgdtfJS/issues"
+    "url": "https://github.com/bralax/MVRGDTF.js/issues"
   },
-  "homepage": "https://github.com/bralax/libMVRgdtfJS#readme",
+  "homepage": "https://github.com/bralax/MVRGDTF.js#readme",
   "description": "",
   "devDependencies": {
     "@types/adm-zip": "^0.5.7",
